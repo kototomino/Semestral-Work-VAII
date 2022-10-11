@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="mainPage.css" rel="stylesheet">
+    <title>Main Page</title>
+</head>
+<body>
+
+<header>
+    <div class="logo">Snow Pow</div>
+    <div class="nav-bar-small">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<script>
+    navbarSmall = document.querySelector(".nav-bar-small");
+    navbarSmall.onclick = function () {
+        navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+    }
+</script>
+
+</body>
+</html>

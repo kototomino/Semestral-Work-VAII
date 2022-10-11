@@ -1,0 +1,125 @@
+body {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("https://img.freepik.com/premium-vector/beautiful-christmas-winter-landscape-background-flat-style-christmas-forest-woods-with-mountains-frame-country-house_502274-309.jpg?w=2000");
+}
+.contact {
+    position: relative;
+    min-height: 50vh;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contact .title {
+    max-width: 800px;
+    text-align: center;
+}
+.contact .title h1 {
+    font-size: 36px;
+    font-weight: bold;
+
+}
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.container .container-contact-info .box {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+
+}
+.container .container-contact-info .box .icon {
+    min-width: 60px;
+    height: 60px;
+    background: white;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.container .container-contact-info .box .text {
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    flex-direction: column;
+    font-weight: 300;
+}
+.container .container-contact-info .box h3 {
+    font-weight: bold;
+    color: black;
+}
+.contact-form {
+    width: 40%;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.77);
+    border-radius: 10%;
+}
+.contact-form .input {
+    border-radius: 10px;
+    width: 100%;
+    padding: 14px 16px;
+    border: 0;
+    background: cornflowerblue;
+    color: #fff;
+    font-family: monospace, serif;
+    letter-spacing: 0.05em;
+    font-size: 16px;
+    margin: 0 0 40px;
+    border: 0;
+}
+::placeholder {
+    color: white;
+}
+.contact-form .btn {
+    width: 40%;
+    height: 50px;
+    margin-left: 30%;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: monospace, serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    outline: none;
+}
+.contact-form .btn:hover {
+    background-color: rgba(31, 31, 31, 0.92);
+    box-shadow: 0px 15px 20px rgba(6, 41, 243, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+.contact-form .btn:active {
+    color: rgba(31, 31, 31, 0.92);
+    transform: translateY(-1px);
+    background: white;
+}
+
+@media (max-width: 900px) {
+    .contact {
+        padding: 50px;
+        margin-top: 200px;
+    }
+    .container {
+        flex-direction: column;
+    }
+    .container .container-contact-info {
+        margin-bottom: 40px;
+    }
+    .container .container-contact-info, .contact-form {
+        width: 100%;
+    }
+}

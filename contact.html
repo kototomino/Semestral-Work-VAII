@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="mainPage.css" rel="stylesheet">
+    <link href="contactPage.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Contact</title>
+</head>
+<body>
+
+<header>
+    <div class="logo">Snow Pow</div>
+    <div class="nav-bar-small">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="contact">
+    <div class="title">
+        <h1>Contact Us</h1>
+    </div>
+<div class="container">
+    <div class="container-contact-info">
+        <div class="box">
+            <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="text">
+            <h3>Adress</h3>
+            <p>Univerzitná 8215/1,<br>010 26, Žilina</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-contact-info">
+        <div class="box">
+            <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            <div class="text">
+            <h3>Email</h3>
+            <p>SnowPowShop@info.com</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-contact-info">
+        <div class="box">
+            <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+            <div class="text">
+            <h3>Phone</h3>
+            <p>+421 999 999</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contact-form">
+    <input placeholder="Name" name="name" type="text" class="input">
+
+    <div>
+        <input placeholder="Email" name="email" type="email" class="input">
+    </div>
+    <div>
+        <input placeholder="Phone Number" name="phone" type="text" class="input">
+    </div>
+    <div>
+        <input placeholder="Message" name="message" type="text" class="input">
+    </div>
+
+    <div>
+        <button class="btn">SEND !</button>
+    </div>
+
+</div>
+</section>
+<script>
+    navbarSmall = document.querySelector(".nav-bar-small");
+    navbarSmall.onclick = function () {
+        navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+    }
+</script>
+
+</body>
+</html>

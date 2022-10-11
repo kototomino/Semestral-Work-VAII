@@ -1,0 +1,118 @@
+h1 {
+    text-align: center;
+    font-size: 70px;
+    font-weight: 600;
+    font-family: monospace, serif;
+    color: rgba(31, 31, 31, 0.92);
+    margin-left: 15px;
+    text-shadow: 0px 0px 5px #f5f1f1, 0px 0px 10px #455077, 0px 0px 10px #5a75de,
+    0px 0px 20px #93b6d3;
+}
+
+body {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/004/341/241/original/mountain-resort-flat-color-illustration-ski-season-outdoor-recreation-skiing-and-snowboarding-opportunities-mountain-national-park-2d-cartoon-landscape-with-snowy-peaks-on-background-vector.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.container {
+    width: 50%;
+
+
+}
+
+.admin, .customer {
+    width: 50%;
+    color: white;
+    float: left;
+    height: 60px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    line-height: 60px;
+}
+
+.form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.control {
+    margin: 15px 0 20px;
+}
+
+.input {
+    border-radius: 10px;
+    width: 100%;
+    padding: 14px 16px;
+    border: 0;
+    background: cornflowerblue;
+    color: #fff;
+    font-family: monospace, serif;
+    letter-spacing: 0.05em;
+    font-size: 16px;
+    margin: 0 0 40px;
+    border: 0;
+}
+
+.input:focus {
+    outline-color: black;
+    box-shadow: inset 20px 20px 60px rgba(31, 31, 31, 0.92),
+    inset -20px -20px 60px rgba(183, 46, 229, 0.4);
+    transition: 0.3s;
+}
+
+::placeholder {
+    color: white;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+button {
+    width: 50%;
+    height: 60px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: monospace, serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    background-color: #fff;
+    margin-left: 30%;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    outline: none;
+}
+
+button:hover {
+    background-color: rgba(31, 31, 31, 0.92);
+    box-shadow: 0px 15px 20px rgba(183, 46, 229, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+button:hover {
+    color: #ffffff;
+    border: 1px solid #fcfcfc;
+}
+
+button:hover:before {
+    top: -35%;
+    background-color: #7a93c4;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+button:hover:after {
+    top: -45%;
+    background-color: rgba(183, 46, 229, 0.4);
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
