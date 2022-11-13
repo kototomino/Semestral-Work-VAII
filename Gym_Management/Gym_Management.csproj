@@ -167,11 +167,18 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CoachController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Controllers\Account\AccountController.cs" />
+    <Compile Include="Controllers\Management\CoachController.cs" />
+    <Compile Include="Controllers\Management\CustomerController.cs" />
+    <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\Account\ManageController.cs" />
+    <Compile Include="Controllers\Management\EventController.cs" />
+    <Compile Include="Controllers\Management\GearController.cs" />
+    <Compile Include="Controllers\Management\MessageController.cs" />
+    <Compile Include="Controllers\Management\ProductController.cs" />
+    <Compile Include="Controllers\Management\WorkoutController.cs" />
+    <Compile Include="Controllers\Management\WorkoutTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,6 +195,14 @@
     <Compile Include="Migrations\202211122126223_SeedUsers.Designer.cs">
       <DependentUpon>202211122126223_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211131038583_DateTimeProps.cs" />
+    <Compile Include="Migrations\202211131038583_DateTimeProps.Designer.cs">
+      <DependentUpon>202211131038583_DateTimeProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211131228487_ModelValidations.cs" />
+    <Compile Include="Migrations\202211131228487_ModelValidations.Designer.cs">
+      <DependentUpon>202211131228487_ModelValidations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />
@@ -202,12 +217,15 @@
     <Compile Include="Models\Management\WorkoutType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validators\MinimalAge15Customer.cs" />
+    <Compile Include="Validators\MinimalAge18Coach.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\myStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -259,14 +277,48 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Coach\Index.cshtml" />
-    <Content Include="Views\Coach\Details.cshtml" />
-    <Content Include="Views\Coach\Edit.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Workout\Create.cshtml" />
+    <Content Include="Views\Workout\Delete.cshtml" />
+    <Content Include="Views\Workout\Details.cshtml" />
+    <Content Include="Views\Workout\Edit.cshtml" />
+    <Content Include="Views\Workout\Index.cshtml" />
+    <Content Include="Views\WorkoutType\Create.cshtml" />
+    <Content Include="Views\WorkoutType\Delete.cshtml" />
+    <Content Include="Views\WorkoutType\Details.cshtml" />
+    <Content Include="Views\WorkoutType\Edit.cshtml" />
+    <Content Include="Views\WorkoutType\Index.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Gear\Create.cshtml" />
+    <Content Include="Views\Gear\Delete.cshtml" />
+    <Content Include="Views\Gear\Details.cshtml" />
+    <Content Include="Views\Gear\Edit.cshtml" />
+    <Content Include="Views\Gear\Index.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\Delete.cshtml" />
+    <Content Include="Views\Message\Details.cshtml" />
+    <Content Include="Views\Message\Edit.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Coach\Create.cshtml" />
+    <Content Include="Views\Coach\Delete.cshtml" />
+    <Content Include="Views\Coach\Details.cshtml" />
+    <Content Include="Views\Coach\Edit.cshtml" />
+    <Content Include="Views\Coach\Index.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,6 +345,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211122126223_SeedUsers.resx">
       <DependentUpon>202211122126223_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211131038583_DateTimeProps.resx">
+      <DependentUpon>202211131038583_DateTimeProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211131228487_ModelValidations.resx">
+      <DependentUpon>202211131228487_ModelValidations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

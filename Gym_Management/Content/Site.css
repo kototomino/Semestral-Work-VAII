@@ -1,12 +1,22 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
+}
+* {
+    font-family: monospace, serif;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 15px;
+    background: rgb(223 223 223);
+    opacity: 0.84;
+    margin-top: 40px;
+    overflow-y: scroll;
+    max-height: 500px
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

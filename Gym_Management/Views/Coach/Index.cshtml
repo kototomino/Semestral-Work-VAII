@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Coach</h2>
 
 <p>
+    <i class="fa fa-plus" aria-hidden="true"></i>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="styled-table table-bordered table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -24,35 +25,696 @@
         <th>
             @Html.DisplayNameFor(model => model.SkillDegree)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SurName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SkillDegree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+    @foreach (var item in Model)
+    {
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+            <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+<tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr><tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillDegree)
+            </td>
+            <td>
+
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+        </tr>
+    }
 
 </table>

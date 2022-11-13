@@ -9,109 +9,109 @@ using System.Web.Mvc;
 using Gym_Management.Models;
 using Gym_Management.Models.Management;
 
-namespace Gym_Management.Controllers
+namespace Gym_Management.Controllers.Management
 {
-    public class CustomerController : Controller
+    public class WorkoutTypeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Customer
+        // GET: WorkoutType
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.WorkoutTypes.ToList());
         }
 
-        // GET: Customer/Details/5
+        // GET: WorkoutType/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            WorkoutType workoutType = db.WorkoutTypes.Find(id);
+            if (workoutType == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(workoutType);
         }
 
-        // GET: Customer/Create
+        // GET: WorkoutType/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customer/Create
+        // POST: WorkoutType/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,SurName,DateOfBirth,Description")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,Name")] WorkoutType workoutType)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
+                db.WorkoutTypes.Add(workoutType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+            return View(workoutType);
         }
 
-        // GET: Customer/Edit/5
+        // GET: WorkoutType/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            WorkoutType workoutType = db.WorkoutTypes.Find(id);
+            if (workoutType == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(workoutType);
         }
 
-        // POST: Customer/Edit/5
+        // POST: WorkoutType/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,SurName,DateOfBirth,Description")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,Name")] WorkoutType workoutType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(workoutType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            return View(workoutType);
         }
 
-        // GET: Customer/Delete/5
+        // GET: WorkoutType/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            WorkoutType workoutType = db.WorkoutTypes.Find(id);
+            if (workoutType == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(workoutType);
         }
 
-        // POST: Customer/Delete/5
+        // POST: WorkoutType/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
+            WorkoutType workoutType = db.WorkoutTypes.Find(id);
+            db.WorkoutTypes.Remove(workoutType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

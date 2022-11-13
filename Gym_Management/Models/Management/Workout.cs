@@ -11,13 +11,14 @@ namespace Gym_Management.Models.Management
         [Key]
         public int Id { get; set; }
         [Required]
+        [StringLength(70)]
         public string Name { get; set; }
         [Required]
         public WorkoutType WorkoutType { get; set; }
         [Required]
-        public string StartDateTime { get; set; }
+        public DateTime StartDateTime { get; set; }
         [Required]
-        public string EndDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
         public Coach Coach { get; set; }
         public Customer Customer { get; set; }
         [Required]

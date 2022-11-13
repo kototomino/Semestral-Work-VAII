@@ -101,7 +101,6 @@ C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\Microsoft.Owin.Security.Twitter
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\Microsoft.Owin.Security.OAuth.xml
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.csproj.AssemblyReference.cache
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.csproj.CoreCompileInputs.cache
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.csproj.CopyComplete
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.dll
@@ -110,3 +109,6 @@ C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.csproj.GenerateResource.cache
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.InitModel.resources
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.SeedUsers.resources
+C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.DateTimeProps.resources
+C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.ModelValidations.resources
+C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.csproj.AssemblyReference.cache
