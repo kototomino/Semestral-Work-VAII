@@ -16,6 +16,7 @@ namespace Gym_Management.Models.Management
         [Required]
         public decimal? Quantity { get; set; }
         [StringLength(20)]
+        [Display(Name = "Type")]
         public string GearType { get; set; }
     }
 }

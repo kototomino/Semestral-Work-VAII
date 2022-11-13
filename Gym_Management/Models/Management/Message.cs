@@ -16,7 +16,7 @@ namespace Gym_Management.Models.Management
         [Required]
         [StringLength(500)]
         public string Content { get; set; }
-
+        [Display(Name = "Date Sent")]
         public DateTime TimeSend { get; set; }
     }
 }
