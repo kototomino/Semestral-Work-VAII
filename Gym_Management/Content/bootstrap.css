@@ -8504,4 +8504,10 @@ button.close {
                 border-bottom: 0;
             }
 }
+.footer-clock {
+    font-size:15px;
+    position:fixed;
+    bottom:5px;
+    right:10px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

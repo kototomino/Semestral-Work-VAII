@@ -13,6 +13,35 @@
                 <li><a href="#"> <i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
 
             </ul>
+            <div class="footer-clock">
+                <span id="hours">00</span>
+                <span>:</span>
+                <span id="minutes">00</span>
+                <span>:</span>
+                <span id="seconds">00</span>
+                <span id="session">AM</span>
+
+            </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function clock() {
+        var dateTime = new Date();
+        var hrs = dateTime.getHours();
+        var min = dateTime.getMinutes();
+        var sec = dateTime.getSeconds();
+        var session = document.getElementById('session');
+        if (hrs >= 12) {
+            session.innerHTML = 'PM';
+        } else {
+            session.innerHTML = 'AM';
+        }
+
+        document.getElementById('hours').innerHTML = hrs;
+        document.getElementById('minutes').innerHTML = min;
+        document.getElementById('seconds').innerHTML = sec;
+    }
+    setInterval(clock, 10);
+</script>
