@@ -10,20 +10,21 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="styled-table table-bordered table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SurName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </th>
-        <th></th>
-    </tr>
-
+<table id="customer" class="styled-table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
     @foreach (var item in Model)
     {
         <tr class="active-row">
@@ -52,3 +53,11 @@
     }
 
 </table>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#customer").DataTable();
+
+        });
+    </script>
+}

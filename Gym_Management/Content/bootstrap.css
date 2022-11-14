@@ -15,6 +15,7 @@ body {
     background-image: url("https://images.alphacoders.com/692/692039.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 article,
@@ -3924,6 +3925,7 @@ fieldset[disabled] a.btn {
     color: #333;
     background-color: #fff;
     border-color: #ccc;
+    border-radius:15px;
 }
 
     .btn-default:focus,
@@ -8454,6 +8456,7 @@ button.close {
 }
 
 @media screen and (max-width: 767px) {
+    
     .styled-table {
         width: 100%;
         margin-bottom: 15px;
@@ -8510,4 +8513,11 @@ button.close {
     bottom:5px;
     right:10px;
 }
+@media screen and (max-width: 600px) {
+    .footer-clock {
+        bottom: 100px;
+        left: 40px;
+    }
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

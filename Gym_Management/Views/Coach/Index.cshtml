@@ -12,24 +12,27 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table id="coach" class="styled-table table-bordered table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SurName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SkillDegree)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillDegree)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
+
         <tr class="active-row">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -719,14 +722,12 @@
     }
 
 </table>
-@section scripts
-{
-
-    <script type="text/javascript">
+@section scripts {
+    <script>
         $(document).ready(function () {
-            $("#coach").DataTable();
+            $("coach").DataTable();
+
         });
     </script>
-
-
 }
+

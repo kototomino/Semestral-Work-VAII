@@ -10,36 +10,46 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="styled-table table-bordered table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr class="active-row">
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
-            {
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                <i class="fa fa-search" aria-hidden="true"></i>
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                <i class="fa fa-trash" aria-hidden="true"></i>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            }
-            else
-            {
-                <i class="fa fa-search" aria-hidden="true"></i>
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-            }
-        </td>
-    </tr>
-}
+<table id="wtype" class="styled-table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#wtype").DataTable();
+
+        });
+    </script>
+}

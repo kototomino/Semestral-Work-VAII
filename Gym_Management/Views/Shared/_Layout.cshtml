@@ -25,3 +25,9 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#coach").DataTable();
+        $(".body-content").show().animate({ opacity: '0.84' }, 1500);
+    });
+</script>

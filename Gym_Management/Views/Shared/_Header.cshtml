@@ -12,13 +12,24 @@
             <ul class="nav navbar-nav">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink("Coaches", "Index", "Coach")</li>
-                    <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
-                    <li>@Html.ActionLink("Workouts", "Index", "Workout")</li>
-                    <li>@Html.ActionLink("Workout Types", "Index", "WorkoutType")</li>
-                    <li>@Html.ActionLink("Products", "Index", "Product")</li>
-                    <li>@Html.ActionLink("Gear", "Index", "Gear")</li>
-                    <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                    if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                    {
+                        <li>@Html.ActionLink("Coaches", "Index", "Coach")</li>
+                        <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
+                        <li>@Html.ActionLink("Workouts", "Index", "Workout")</li>
+                        <li>@Html.ActionLink("Workout Types", "Index", "WorkoutType")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                        <li>@Html.ActionLink("Gear", "Index", "Gear")</li>
+                        <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Coaches", "Index", "Coach")</li>
+                        <li>@Html.ActionLink("Workouts", "Index", "Workout")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                        <li>@Html.ActionLink("Gear", "Index", "Gear")</li>
+                        <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                    }
                 }
 
             </ul>
