@@ -24,30 +24,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr class="active-row">
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SurName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
-            {
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                <i class="fa fa-search" aria-hidden="true"></i>
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                <i class="fa fa-trash" aria-hidden="true"></i>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            }
+    @foreach (var item in Model)
+    {
+        <tr class="active-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+                {
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
 
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>

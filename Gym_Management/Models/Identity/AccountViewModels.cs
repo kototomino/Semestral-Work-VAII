@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Gym_Management.Models.Management;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Gym_Management.Models
@@ -79,6 +80,8 @@ namespace Gym_Management.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        public Customer Customer { get; set; }
     }
 
     public class ResetPasswordViewModel

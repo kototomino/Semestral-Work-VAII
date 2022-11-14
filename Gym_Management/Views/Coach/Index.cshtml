@@ -11,7 +11,7 @@
     <i class="fa fa-plus" aria-hidden="true"></i>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="styled-table table-bordered table-hover">
+<table id="coach" class="styled-table table-bordered table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -612,7 +612,7 @@
                     @Html.ActionLink("Details", "Details", new { id = item.Id })
                 }
             </td>
-            <tr class="active-row">
+        <tr class="active-row">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -642,7 +642,7 @@
                     @Html.ActionLink("Details", "Details", new { id = item.Id })
                 }
             </td>
-<tr class="active-row">
+        <tr class="active-row">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -672,7 +672,8 @@
                     @Html.ActionLink("Details", "Details", new { id = item.Id })
                 }
             </td>
-        </tr><tr class="active-row">
+        </tr>
+        <tr class="active-row">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -718,3 +719,14 @@
     }
 
 </table>
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#coach").DataTable();
+        });
+    </script>
+
+
+}
