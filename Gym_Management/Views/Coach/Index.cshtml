@@ -1,15 +1,19 @@
 ﻿@model IEnumerable<Gym_Management.Models.Management.Coach>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Coaches";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Coach</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    <i class="fa fa-plus" aria-hidden="true"></i>
-    @Html.ActionLink("Create New", "Create")
+
+    @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+    {
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        @Html.ActionLink("Create New", "Create", "Coach", new { @class = "styled-action-link-button" })
+    }
 </p>
 <table id="coach" class="styled-table table-bordered table-hover">
     <thead>
@@ -725,7 +729,8 @@
 @section scripts {
     <script>
         $(document).ready(function () {
-            $("coach").DataTable();
+            $("#coach").DataTable();
+
 
         });
     </script>

@@ -47,7 +47,7 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,StartDateTime,EndDateTime,Capacity")] Workout workout)
+        public ActionResult Create([Bind(Include = "Id,Name,StartDateTime,EndDateTime,Capacity,WorkoutType")] Workout workout)
         {
             if (ModelState.IsValid)
             {

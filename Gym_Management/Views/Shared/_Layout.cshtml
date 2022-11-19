@@ -14,8 +14,8 @@
     <div class="container body-content">
         @RenderBody()
         <div class="container">
-            
-                @Html.Partial("_Footer")
+
+            @Html.Partial("_Footer")
 
         </div>
     </div>
@@ -23,11 +23,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
+    <script>
+        $(document).ready(function () {
+            $(".body-content").show().animate({ opacity: '0.84' }, 1500);
+        });
+    </script>
 </body>
 </html>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#coach").DataTable();
-        $(".body-content").show().animate({ opacity: '0.84' }, 1500);
-    });
-</script>
+

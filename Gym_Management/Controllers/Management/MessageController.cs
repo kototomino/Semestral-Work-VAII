@@ -18,10 +18,18 @@ namespace Gym_Management.Controllers.Management
         // GET: Message
         public ActionResult Index()
         {
-            return View(db.Messages.ToList());
+            if(User.IsInRole(Constants.Roles.Admin))
+            {
+                return View(db.Messages.ToList());
+            } else
+            {
+                return RedirectToAction("Create");
+            }
+            
         }
 
         // GET: Message/Details/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -47,10 +55,12 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Create([Bind(Include = "Id,Title,Content")] Message message)
         {
             if (ModelState.IsValid)
             {
+                message.TimeSend = DateTime.Now;
                 db.Messages.Add(message);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,6 +70,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Message/Edit/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +90,7 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Edit([Bind(Include = "Id,Title,Content")] Message message)
         {
             if (ModelState.IsValid)
@@ -91,6 +103,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Message/Delete/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +121,7 @@ namespace Gym_Management.Controllers.Management
         // POST: Message/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult DeleteConfirmed(int id)
         {
             Message message = db.Messages.Find(id);

@@ -37,6 +37,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Event/Create
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +48,7 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Create([Bind(Include = "Id,Name,StartDateTime,EndDateTime")] Event @event)
         {
             if (ModelState.IsValid)
@@ -60,6 +62,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Event/Edit/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +82,7 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Edit([Bind(Include = "Id,Name,StartDateTime,EndDateTime")] Event @event)
         {
             if (ModelState.IsValid)
@@ -91,6 +95,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Event/Delete/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +113,7 @@ namespace Gym_Management.Controllers.Management
         // POST: Event/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult DeleteConfirmed(int id)
         {
             Event @event = db.Events.Find(id);

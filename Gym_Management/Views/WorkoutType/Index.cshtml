@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<Gym_Management.Models.Management.WorkoutType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Workout types";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    
+    @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+    {
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        @Html.ActionLink("Create New", "Create", "WorkoutType", new { @class = "styled-action-link-button" })
+    }
 </p>
 <table id="wtype" class="styled-table table-bordered table-hover">
     <thead>
@@ -49,6 +54,7 @@
     <script>
         $(document).ready(function () {
             $("#wtype").DataTable();
+
 
         });
     </script>

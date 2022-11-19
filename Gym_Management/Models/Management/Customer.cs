@@ -25,5 +25,9 @@ namespace Gym_Management.Models.Management
         public DateTime DateOfBirth { get; set; }
         [StringLength(500)]
         public string Description { get; set; }
+        
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
     }
 }

@@ -3,9 +3,9 @@
 
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a>@Html.ActionLink("Home", "Index", "Home")</a></li>
-                <li><a>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</a></li>
-                <li><a>@Html.ActionLink("Contact Us!", "Index", "Message")</a></li>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                <li>@Html.ActionLink("Contact Us!", "Index", "Message")</li>
             </ul>
             <ul class="f-socials">
                 <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
+<script>
     function clock() {
         var dateTime = new Date();
         var hrs = dateTime.getHours();

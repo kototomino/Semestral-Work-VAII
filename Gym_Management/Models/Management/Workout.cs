@@ -13,7 +13,7 @@ namespace Gym_Management.Models.Management
         [Required]
         [StringLength(70)]
         public string Name { get; set; }
-        [Required]
+        
         [Display(Name = "Type")]
         public WorkoutType WorkoutType { get; set; }
         [Required]

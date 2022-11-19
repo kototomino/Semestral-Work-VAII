@@ -1,6 +1,4 @@
 ﻿@model Gym_Management.Models.Management.Workout
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
-<link href="//cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,7 +26,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                <div class='input-group date' id='datetimepickerFrom'>
+                    @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+
                 @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +40,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDateTime, new { htmlAttributes = new { @class = "form-control", @id = "EndDate" } })
+                <div class='input-group date' id='datetimepickerTo'>
+                    @Html.EditorFor(model => model.EndDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+
                 @Html.ValidationMessageFor(model => model.EndDateTime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -48,6 +58,21 @@
                 @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.WorkoutType.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WorkoutType.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WorkoutType.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.WorkoutType.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WorkoutType.Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WorkoutType.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -63,15 +88,20 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-        $(function () {
-            $('#EndDate').ejDateTimePicker({
-                width: "200px",
-                timeDisplayFormat: "hh:mm:ss",
-                dateTimeFormat: "MM/dd/yyyy hh:mm:ss",
-                allowEdit: true,
-                value: new Date()
+    <script>
+        $(document).ready(function () {
+            $.validator.methods.date = function (value, element) {
+                return this.optional(element) || moment(value, "DD. MM. YYYY HH:mm", true).isValid();
+            }
+            $('#datetimepickerFrom').datetimepicker({
+                format: 'DD. MM. YYYY HH:mm'
             });
+            $('#datetimepickerTo').datetimepicker({
+                format: 'DD. MM. YYYY HH:mm'
+            });
+
         });
+
     </script>
+
 }

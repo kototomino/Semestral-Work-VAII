@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<Gym_Management.Models.Management.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>@ViewBag.Title</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+
+    @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+    {
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        @Html.ActionLink("Create New", "Create", "Product", new { @class = "styled-action-link-button" })
+    }
 </p>
 <table id="product" class="styled-table table-bordered table-hover">
     <thead>

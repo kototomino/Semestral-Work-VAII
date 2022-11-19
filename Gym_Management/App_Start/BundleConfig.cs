@@ -11,7 +11,10 @@ namespace Gym_Management
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/datatables/jquery.datatables.js",
-                        "~/Scripts/datatables/datatables.bootstrap.js"
+                        "~/Scripts/datatables/datatables.bootstrap.js",
+                        "~/Scripts/moment.js",
+                        "~/Scripts/bootstrap-datetimepicker.js"
+                        
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -28,7 +31,8 @@ namespace Gym_Management
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/datatables/css/datatables.bootstrap.css"
+                      "~/Content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/bootstrap-datetimepicker.css"
                       ));
         }
     }

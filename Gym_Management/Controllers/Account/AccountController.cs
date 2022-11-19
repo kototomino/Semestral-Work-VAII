@@ -160,10 +160,11 @@ namespace Gym_Management.Controllers
                 if (customerList.ToList().Count == 0)
                 {
                     model.Customer.Id = 1;
+                    model.Customer.Email = model.Email;
                     applicationDbContext.Customers.Add(model.Customer);
-                    await applicationDbContext.SaveChangesAsync();
                     var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
+                    await applicationDbContext.SaveChangesAsync();
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -179,10 +180,11 @@ namespace Gym_Management.Controllers
                     Customer customer = customerList.ToList().LastOrDefault();
                     int id = customer.Id;
                     model.Customer.Id = id + 1;
+                    model.Customer.Email = model.Email;
                     applicationDbContext.Customers.Add(model.Customer);
-                    await applicationDbContext.SaveChangesAsync();
                     var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
+                    await applicationDbContext.SaveChangesAsync();
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

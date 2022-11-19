@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Gym_Management.Models;
 using Gym_Management.Models.Management;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Gym_Management.Controllers.Management
 {
@@ -112,6 +113,8 @@ namespace Gym_Management.Controllers.Management
         public ActionResult DeleteConfirmed(int id)
         {
             Customer customer = db.Customers.Find(id);
+            ApplicationUser user = db.Users.Where(u => u.Email == customer.Email).FirstOrDefault();
+            db.Users.Remove(user);
             db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");

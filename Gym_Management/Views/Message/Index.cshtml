@@ -1,14 +1,20 @@
 ﻿@model IEnumerable<Gym_Management.Models.Management.Message>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Messages";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+
+    @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+    {
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        @Html.ActionLink("Create New", "Create", "Message", new { @class = "styled-action-link-button" })
+    }
+
 </p>
 <table id="message" class="styled-table table-bordered table-hover">
     <thead>
@@ -18,6 +24,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSend)
             </th>
             <th></th>
         </tr>
@@ -30,6 +39,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeSend)
             </td>
             <td>
                 @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))

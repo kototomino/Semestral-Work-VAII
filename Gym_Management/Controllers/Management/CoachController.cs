@@ -11,15 +11,20 @@ using Gym_Management.Models.Management;
 
 namespace Gym_Management.Controllers.Management
 {
-    [Authorize(Roles = Constants.Roles.Admin)]
+    
     public class CoachController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Coach
+        
         public ActionResult Index()
         {
-            return View(db.Coaches.ToList());
+            return View(this.GetCoaches());
+        }
+        public List<Coach> GetCoaches()
+        {
+            return db.Coaches.ToList();
         }
 
         // GET: Coach/Details/5
@@ -38,6 +43,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Coach/Create
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Create()
         {
             return View();
@@ -48,6 +54,7 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Create([Bind(Include = "Id,Name,SurName,DateOfBirth,SkillDegree,Description")] Coach coach)
         {
             if (ModelState.IsValid)
@@ -61,6 +68,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Coach/Edit/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,6 +88,7 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Edit([Bind(Include = "Id,Name,SurName,DateOfBirth,SkillDegree,Description")] Coach coach)
         {
             if (ModelState.IsValid)
@@ -92,6 +101,7 @@ namespace Gym_Management.Controllers.Management
         }
 
         // GET: Coach/Delete/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,6 +119,7 @@ namespace Gym_Management.Controllers.Management
         // POST: Coach/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult DeleteConfirmed(int id)
         {
             Coach coach = db.Coaches.Find(id);
