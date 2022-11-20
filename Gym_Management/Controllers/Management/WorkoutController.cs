@@ -24,6 +24,7 @@ namespace Gym_Management.Controllers.Management
         {
             this.PrepareCoach();
             this.PrepareCustomers();
+            this.PrepareWorkoutTypes();
             return View(db.Workouts.ToList());
         }
         private void PrepareCustomers()
@@ -31,13 +32,18 @@ namespace Gym_Management.Controllers.Management
             var signedList = db.SignedCustomerToWorkouts.ToList();
             var customers = db.Customers.ToList();
             var workouts = db.Workouts.ToList();
+            var list = new List<Customer>();
             foreach (var item in signedList)
             {
-                var workout = workouts.Where(i => i.Id == item.WorkoutId).FirstOrDefault();
-                var customer = customers.Where(i => i.Id == item.CustomerId).FirstOrDefault();
+                var workout = workouts.Where(i => i.Id == item.WorkoutId).SingleOrDefault();
+                var customer = customers.Where(i => i.Id == item.CustomerId).SingleOrDefault();
                 if (customer != null)
                 {
-                    workout.Customers.Add(customer);
+                    if (!customers.Contains(customer))
+                    {
+                        list.Add(customer);
+                        workout.Customers = list;
+                    }
                 }
 
             }
@@ -45,13 +51,35 @@ namespace Gym_Management.Controllers.Management
             //var customer = db.Customers.Where(x => x.Id == signed.CustomerId).FirstOrDefault();
             //db.Workouts.FirstOrDefault().Customers.Add(customer);
         }
+        private void PrepareWorkoutTypes()
+        {
+            var wtypes = db.WorkoutTypes.ToList();
+            var workouts = db.Workouts.ToList();
+            foreach (var item in workouts)
+            {
+
+                var wtype = wtypes.Where(i => i.Id == item.WorkoutTypeId).SingleOrDefault();
+                if (wtype != null)
+                {
+                    item.WorkoutType = wtype;
+                }
+
+            }
+
+        }
         private void PrepareCoach()
         {
-
-            var coach = db.Coaches.Where(x => x.Id == db.Workouts.FirstOrDefault().CoachId).ToList().FirstOrDefault();
-            if (coach != null)
+            var coaches = db.Coaches.ToList();
+            var workouts = db.Workouts.ToList();
+            foreach (var item in workouts)
             {
-                db.Workouts.FirstOrDefault().Coach = coach;
+
+                var coach = coaches.Where(i => i.Id == item.CoachId).SingleOrDefault();
+                if (coach != null)
+                {
+                    item.Coach = coach;
+                }
+
             }
         }
         // GET: Workout/Details/5
@@ -61,6 +89,9 @@ namespace Gym_Management.Controllers.Management
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            this.PrepareCoach();
+            this.PrepareCustomers();
+            this.PrepareWorkoutTypes();
             Workout workout = db.Workouts.Find(id);
             if (workout == null)
             {
@@ -71,34 +102,42 @@ namespace Gym_Management.Controllers.Management
 
         public ActionResult SignOutCustomer(int id)
         {
+            this.PrepareCustomers();
             var userName = User.Identity.Name;
-            var customer = db.Customers.ToList().Where(x => x.Email == userName).FirstOrDefault();
+            var customer = db.Customers.ToList().Where(x => x.Email == userName).SingleOrDefault();
             var workout = db.Workouts.Find(id);
-            var signed = db.SignedCustomerToWorkouts;
-            var signedCustomerToWorkout = signed.Where(x => x.CustomerId == customer.Id && x.WorkoutId == workout.Id).FirstOrDefault();
-            if (signedCustomerToWorkout != null)
+            var signed = db.SignedCustomerToWorkouts.ToList();
+            if (workout.Customers.Contains(customer))
             {
-                workout.Capacity++;
-                signed.Remove(signedCustomerToWorkout);
-                db.SaveChanges();
+                var signedCustomerToWorkout = signed.Where(x => x.CustomerId == customer.Id && x.WorkoutId == workout.Id).FirstOrDefault();
+                if (signedCustomerToWorkout != null)
+                {
+                    workout.Capacity++;
+                    workout.Customers.Remove(customer);
+                    signed.Remove(signedCustomerToWorkout);
+                    db.SaveChanges();
+                }
             }
-
             return RedirectToAction("Index", db.Workouts.ToList());
         }
         public ActionResult SignCustomer(int id)
         {
+            this.PrepareCustomers();
             var userName = User.Identity.Name;
-            var customer = db.Customers.ToList().Where(x => x.Email == userName).FirstOrDefault();
+            var customer = db.Customers.ToList().Where(x => x.Email == userName).SingleOrDefault();
             var workout = db.Workouts.Find(id);
-            SignedCustomerToWorkout signedCustomerToWorkout = new SignedCustomerToWorkout() { CustomerId = customer.Id, WorkoutId = workout.Id };
-            var signed = db.SignedCustomerToWorkouts;
-            if (workout.Capacity != 0)
+            if (!workout.Customers.Contains(customer))
             {
-                workout.Capacity--;
-                signed.Add(signedCustomerToWorkout);
-                db.SaveChanges();
+                SignedCustomerToWorkout signedCustomerToWorkout = new SignedCustomerToWorkout() { CustomerId = customer.Id, WorkoutId = workout.Id };
+                var signed = db.SignedCustomerToWorkouts.ToList();
+                if (workout.Capacity != 0)
+                {
+                    workout.Capacity--;
+                    signed.Add(signedCustomerToWorkout);
+                    workout.Customers.Add(customer);
+                    db.SaveChanges();
+                }
             }
-
             //workout.Customers.Add(customer);
 
             return RedirectToAction("Index", db.Workouts.ToList());
@@ -106,12 +145,16 @@ namespace Gym_Management.Controllers.Management
         // GET: Workout/Create
         public ActionResult Create()
         {
+            var model = this.SetViewModel();
+            return View(model);
+        }
+        private WorkoutViewModel SetViewModel()
+        {
             WorkoutViewModel model = new WorkoutViewModel();
 
-            //model.CoachesSelectList.Add(new SelectListItem { Text = "Shyju", Value = "11" });
-
             model.CoachesSelectList = db.Coaches.ToList();
-            return View(model);
+            model.WorkoutTypesSelectList = db.WorkoutTypes.ToList();
+            return model;
         }
 
         // POST: Workout/Create
@@ -123,14 +166,20 @@ namespace Gym_Management.Controllers.Management
         {
             if (ModelState.IsValid)
             {
-                var coach = db.Coaches.Where(x => x.Id == workout.CoachId).FirstOrDefault();
+                var coach = db.Coaches.Where(x => x.Id == workout.CoachId).SingleOrDefault();
+                var wtype = db.WorkoutTypes.Where(x => x.Id == workout.WorkoutTypeId).SingleOrDefault();
                 workout.Coach = coach;
+                workout.WorkoutType = wtype;
                 db.Workouts.Add(workout);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            WorkoutViewModel model = new WorkoutViewModel();
 
-            return View(workout);
+            model.CoachesSelectList = db.Coaches.ToList();
+            model.WorkoutTypesSelectList = db.WorkoutTypes.ToList();
+            model.Workout = workout;
+            return View(model);
         }
 
         // GET: Workout/Edit/5
@@ -140,12 +189,13 @@ namespace Gym_Management.Controllers.Management
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Workout workout = db.Workouts.Find(id);
-            if (workout == null)
+            var model = SetViewModel();
+            model.Workout = db.Workouts.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(workout);
+            return View(model);
         }
 
         // POST: Workout/Edit/5
@@ -153,7 +203,7 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,StartDateTime,EndDateTime,Capacity")] Workout workout)
+        public ActionResult Edit(Workout workout)
         {
             if (ModelState.IsValid)
             {
@@ -184,10 +234,22 @@ namespace Gym_Management.Controllers.Management
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var signed = db.SignedCustomerToWorkouts.Where(x => x.WorkoutId == id).FirstOrDefault();
-            if (signed != null)
+            var signedCustomers = db.SignedCustomerToWorkouts.Where(x => x.WorkoutId == id).FirstOrDefault();
+            var customer = db.Customers.ToList().Where(x => x.Id == id).SingleOrDefault();
+            
+            var signedCoach = db.SignedCoachToWorkouts.Where(x => x.WorkoutId == id).FirstOrDefault();
+            var signedWorkoutType = db.SignedWorkoutTypeToWorkouts.Where(x => x.WorkoutId == id).FirstOrDefault();
+            if (signedCustomers != null)
             {
-                db.SignedCustomerToWorkouts.Remove(signed);
+                db.SignedCustomerToWorkouts.Remove(signedCustomers);
+            }
+            if (signedCoach != null)
+            {
+                db.SignedCoachToWorkouts.Remove(signedCoach);
+            }
+            if (signedWorkoutType != null)
+            {
+                db.SignedWorkoutTypeToWorkouts.Remove(signedWorkoutType);
             }
             Workout workout = db.Workouts.Find(id);
             db.Workouts.Remove(workout);

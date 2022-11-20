@@ -236,6 +236,22 @@
     <Compile Include="Migrations\202211201323029_addedSignedCustomerToWorkout.Designer.cs">
       <DependentUpon>202211201323029_addedSignedCustomerToWorkout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211201905243_workoutTypeReqNameOf.cs" />
+    <Compile Include="Migrations\202211201905243_workoutTypeReqNameOf.Designer.cs">
+      <DependentUpon>202211201905243_workoutTypeReqNameOf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211201922264_workoutTypeId.cs" />
+    <Compile Include="Migrations\202211201922264_workoutTypeId.Designer.cs">
+      <DependentUpon>202211201922264_workoutTypeId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211201948267_addedWorkoutIncidentTables.cs" />
+    <Compile Include="Migrations\202211201948267_addedWorkoutIncidentTables.Designer.cs">
+      <DependentUpon>202211201948267_addedWorkoutIncidentTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211202059357_fixesWorkouts.cs" />
+    <Compile Include="Migrations\202211202059357_fixesWorkouts.Designer.cs">
+      <DependentUpon>202211202059357_fixesWorkouts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />
@@ -246,7 +262,9 @@
     <Compile Include="Models\Management\Gear.cs" />
     <Compile Include="Models\Management\Message.cs" />
     <Compile Include="Models\Management\Product.cs" />
+    <Compile Include="Models\Management\SignedCoachToWorkout.cs" />
     <Compile Include="Models\Management\SignedCustomerToWorkout.cs" />
+    <Compile Include="Models\Management\SignedWorkoutTypeToWorkout.cs" />
     <Compile Include="Models\Management\Workout.cs" />
     <Compile Include="Models\Management\WorkoutType.cs" />
     <Compile Include="Models\Management\WorkoutViewModel.cs" />
@@ -659,6 +677,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211201323029_addedSignedCustomerToWorkout.resx">
       <DependentUpon>202211201323029_addedSignedCustomerToWorkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211201905243_workoutTypeReqNameOf.resx">
+      <DependentUpon>202211201905243_workoutTypeReqNameOf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211201922264_workoutTypeId.resx">
+      <DependentUpon>202211201922264_workoutTypeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211201948267_addedWorkoutIncidentTables.resx">
+      <DependentUpon>202211201948267_addedWorkoutIncidentTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211202059357_fixesWorkouts.resx">
+      <DependentUpon>202211202059357_fixesWorkouts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

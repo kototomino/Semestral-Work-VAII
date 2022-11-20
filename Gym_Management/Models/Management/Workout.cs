@@ -16,6 +16,7 @@ namespace Gym_Management.Models.Management
         
         [Display(Name = "Type")]
         public WorkoutType WorkoutType { get; set; }
+        public int WorkoutTypeId { get; set; }
         [Required]
         [Display(Name = "From")]
         public DateTime StartDateTime { get; set; }
