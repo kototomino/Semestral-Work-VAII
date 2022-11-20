@@ -4,10 +4,13 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Gym_Management.Models;
 using Gym_Management.Models.Management;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Gym_Management.Controllers.Management
 {
@@ -15,12 +18,42 @@ namespace Gym_Management.Controllers.Management
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
         // GET: Workout
         public ActionResult Index()
         {
+            this.PrepareCoach();
+            this.PrepareCustomers();
             return View(db.Workouts.ToList());
         }
+        private void PrepareCustomers()
+        {
+            var signedList = db.SignedCustomerToWorkouts.ToList();
+            var customers = db.Customers.ToList();
+            var workouts = db.Workouts.ToList();
+            foreach (var item in signedList)
+            {
+                var workout = workouts.Where(i => i.Id == item.WorkoutId).FirstOrDefault();
+                var customer = customers.Where(i => i.Id == item.CustomerId).FirstOrDefault();
+                if (customer != null)
+                {
+                    workout.Customers.Add(customer);
+                }
 
+            }
+
+            //var customer = db.Customers.Where(x => x.Id == signed.CustomerId).FirstOrDefault();
+            //db.Workouts.FirstOrDefault().Customers.Add(customer);
+        }
+        private void PrepareCoach()
+        {
+
+            var coach = db.Coaches.Where(x => x.Id == db.Workouts.FirstOrDefault().CoachId).ToList().FirstOrDefault();
+            if (coach != null)
+            {
+                db.Workouts.FirstOrDefault().Coach = coach;
+            }
+        }
         // GET: Workout/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,6 +69,40 @@ namespace Gym_Management.Controllers.Management
             return View(workout);
         }
 
+        public ActionResult SignOutCustomer(int id)
+        {
+            var userName = User.Identity.Name;
+            var customer = db.Customers.ToList().Where(x => x.Email == userName).FirstOrDefault();
+            var workout = db.Workouts.Find(id);
+            var signed = db.SignedCustomerToWorkouts;
+            var signedCustomerToWorkout = signed.Where(x => x.CustomerId == customer.Id && x.WorkoutId == workout.Id).FirstOrDefault();
+            if (signedCustomerToWorkout != null)
+            {
+                workout.Capacity++;
+                signed.Remove(signedCustomerToWorkout);
+                db.SaveChanges();
+            }
+            
+            return RedirectToAction("Index", db.Workouts.ToList());
+        }
+        public ActionResult SignCustomer(int id)
+        {
+            var userName = User.Identity.Name;
+            var customer = db.Customers.ToList().Where(x => x.Email == userName).FirstOrDefault();
+            var workout = db.Workouts.Find(id);
+            SignedCustomerToWorkout signedCustomerToWorkout = new SignedCustomerToWorkout() { CustomerId = customer.Id, WorkoutId = workout.Id };
+            var signed = db.SignedCustomerToWorkouts;
+            if (workout.Capacity != 0)
+            {
+                workout.Capacity--;
+                signed.Add(signedCustomerToWorkout);
+                db.SaveChanges();
+            }
+
+            //workout.Customers.Add(customer);
+            
+            return RedirectToAction("Index", db.Workouts.ToList());
+        }
         // GET: Workout/Create
         public ActionResult Create()
         {
@@ -47,10 +114,12 @@ namespace Gym_Management.Controllers.Management
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,StartDateTime,EndDateTime,Capacity,WorkoutType")] Workout workout)
+        public ActionResult Create(Workout workout)
         {
             if (ModelState.IsValid)
             {
+                var coach = db.Coaches.Where(x => x.Id == workout.CoachId).FirstOrDefault();
+                workout.Coach = coach;
                 db.Workouts.Add(workout);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -15,6 +15,7 @@ namespace Gym_Management.Models.Management
         public string Title { get; set; }
         [Required]
         [StringLength(500)]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         [Display(Name = "Date Sent")]
         public DateTime TimeSend { get; set; }

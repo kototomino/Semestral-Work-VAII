@@ -29,6 +29,7 @@ namespace Gym_Management.Models
         public DbSet<Gear> Gear { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<SignedCustomerToWorkout> SignedCustomerToWorkouts { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

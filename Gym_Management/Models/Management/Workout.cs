@@ -23,7 +23,8 @@ namespace Gym_Management.Models.Management
         [Display(Name = "To")]
         public DateTime EndDateTime { get; set; }
         public Coach Coach { get; set; }
-        public Customer Customer { get; set; }
+        public int CoachId { get; set; }
+        public List<Customer> Customers { get; set; } = new List<Customer>();
         [Required]
         public decimal? Capacity { get; set; }
     }

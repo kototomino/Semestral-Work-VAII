@@ -224,6 +224,18 @@
     <Compile Include="Migrations\202211191733385_workoutTypeReqOff.Designer.cs">
       <DependentUpon>202211191733385_workoutTypeReqOff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211201153399_WorkoutUpdated.cs" />
+    <Compile Include="Migrations\202211201153399_WorkoutUpdated.Designer.cs">
+      <DependentUpon>202211201153399_WorkoutUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211201209463_WorkoutUpdated2.cs" />
+    <Compile Include="Migrations\202211201209463_WorkoutUpdated2.Designer.cs">
+      <DependentUpon>202211201209463_WorkoutUpdated2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211201323029_addedSignedCustomerToWorkout.cs" />
+    <Compile Include="Migrations\202211201323029_addedSignedCustomerToWorkout.Designer.cs">
+      <DependentUpon>202211201323029_addedSignedCustomerToWorkout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />
@@ -234,6 +246,7 @@
     <Compile Include="Models\Management\Gear.cs" />
     <Compile Include="Models\Management\Message.cs" />
     <Compile Include="Models\Management\Product.cs" />
+    <Compile Include="Models\Management\SignedCustomerToWorkout.cs" />
     <Compile Include="Models\Management\Workout.cs" />
     <Compile Include="Models\Management\WorkoutType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -636,6 +649,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211191733385_workoutTypeReqOff.resx">
       <DependentUpon>202211191733385_workoutTypeReqOff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211201153399_WorkoutUpdated.resx">
+      <DependentUpon>202211201153399_WorkoutUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211201209463_WorkoutUpdated2.resx">
+      <DependentUpon>202211201209463_WorkoutUpdated2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211201323029_addedSignedCustomerToWorkout.resx">
+      <DependentUpon>202211201323029_addedSignedCustomerToWorkout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
