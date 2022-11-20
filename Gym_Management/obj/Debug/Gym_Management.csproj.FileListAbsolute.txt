@@ -117,9 +117,9 @@ C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\System.Web.Http.WebHost.dll
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\System.Net.Http.Formatting.xml
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\System.Web.Http.xml
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\bin\System.Web.Http.WebHost.xml
-C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.csproj.AssemblyReference.cache
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.Updated.resources
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.workoutTypeReqOff.resources
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.WorkoutUpdated.resources
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.WorkoutUpdated2.resources
 C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.Migrations.addedSignedCustomerToWorkout.resources
+C:\SCHOOL\VAII-Gym-Management\Gym_Management\obj\Debug\Gym_Management.csproj.AssemblyReference.cache

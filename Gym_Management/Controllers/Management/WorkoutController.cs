@@ -82,7 +82,7 @@ namespace Gym_Management.Controllers.Management
                 signed.Remove(signedCustomerToWorkout);
                 db.SaveChanges();
             }
-            
+
             return RedirectToAction("Index", db.Workouts.ToList());
         }
         public ActionResult SignCustomer(int id)
@@ -100,13 +100,18 @@ namespace Gym_Management.Controllers.Management
             }
 
             //workout.Customers.Add(customer);
-            
+
             return RedirectToAction("Index", db.Workouts.ToList());
         }
         // GET: Workout/Create
         public ActionResult Create()
         {
-            return View();
+            WorkoutViewModel model = new WorkoutViewModel();
+
+            //model.CoachesSelectList.Add(new SelectListItem { Text = "Shyju", Value = "11" });
+
+            model.CoachesSelectList = db.Coaches.ToList();
+            return View(model);
         }
 
         // POST: Workout/Create
@@ -179,6 +184,11 @@ namespace Gym_Management.Controllers.Management
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var signed = db.SignedCustomerToWorkouts.Where(x => x.WorkoutId == id).FirstOrDefault();
+            if (signed != null)
+            {
+                db.SignedCustomerToWorkouts.Remove(signed);
+            }
             Workout workout = db.Workouts.Find(id);
             db.Workouts.Remove(workout);
             db.SaveChanges();
