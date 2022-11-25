@@ -18,7 +18,7 @@ namespace Gym_Management.Controllers.Management
         // GET: WorkoutType
         public ActionResult Index()
         {
-            return View(this.GetWorkoutTypes());
+            return View(db.WorkoutTypes.ToList());
         }
         public IEnumerable<WorkoutType> GetWorkoutTypes()
         {

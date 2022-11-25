@@ -29,9 +29,20 @@ namespace Gym_Management.Models
         public DbSet<Gear> Gear { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<SignedCustomerToWorkout> SignedCustomerToWorkouts { get; set; }
-        public DbSet<SignedWorkoutTypeToWorkout> SignedWorkoutTypeToWorkouts { get; set; }
-        public DbSet<SignedCoachToWorkout> SignedCoachToWorkouts { get; set; }
+        public DbSet<Customer_Workout> CustomersOnWorkouts { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Customer_Workout>().HasKey(cw => new
+            {
+                cw.CustomerId,
+                cw.WorkoutId
+            });
+            modelBuilder.Entity<Customer_Workout>().HasRequired(cw => cw.Customer).WithMany(cw => cw.Customer_Workouts);
+            modelBuilder.Entity<Customer_Workout>().HasRequired(cw => cw.Workout).WithMany(cw => cw.Customer_Workouts);
+            base.OnModelCreating(modelBuilder);  
+        }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -4,7 +4,9 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using Gym_Management.Models;
 using Gym_Management.Models.Management;
@@ -20,7 +22,7 @@ namespace Gym_Management.Controllers.Management
         {
             return View(db.Products.ToList());
         }
-
+      
         // GET: Product/Details/5
         public ActionResult Details(int? id)
         {

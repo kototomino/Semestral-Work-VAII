@@ -35,7 +35,11 @@ namespace Gym_Management.Controllers.Management
             }
             return View(gear);
         }
-
+        // GET: Gear/AddOrEdit/5
+        public ActionResult AddOrEdit(int id = 0)
+        {
+            return View();
+        }
         // GET: Gear/Create
         [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult Create()

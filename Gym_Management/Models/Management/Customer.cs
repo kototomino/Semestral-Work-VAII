@@ -11,6 +11,7 @@ namespace Gym_Management.Models.Management
     {
         [Key]
         public int Id { get; set; }
+        //public int CustomerId { get; set; }
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
@@ -29,5 +30,8 @@ namespace Gym_Management.Models.Management
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        //public ICollection<Workout> Workouts { get; set; } = new HashSet<Workout>();
+        public ICollection<Customer_Workout> Customer_Workouts { get; set; } = new HashSet<Customer_Workout>();
     }
 }

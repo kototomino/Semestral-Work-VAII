@@ -50,13 +50,13 @@
             @Html.DisplayFor(model => model.Coach.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Customers)
+            @Html.DisplayNameFor(model => model.Customer_Workouts)
         </dt>
 
         <dd>
-            @foreach (var item in Model.Customers)
+            @foreach (var item in Model.Customer_Workouts)
             {
-                @Html.DisplayFor(model => item.Name)
+                @Html.DisplayFor(model => item.Customer.Name)
             }
 
         </dd>

@@ -59,6 +59,12 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -179,6 +185,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Context\ManagementDbContext.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\WorkoutTypesController.cs" />
@@ -196,61 +203,30 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\CoachManager.cs" />
+    <Compile Include="MigrationsManagement\202211211437222_Init.cs" />
+    <Compile Include="MigrationsManagement\202211211437222_Init.Designer.cs">
+      <DependentUpon>202211211437222_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsManagement\202211211938460_Skuska.cs" />
+    <Compile Include="MigrationsManagement\202211211938460_Skuska.Designer.cs">
+      <DependentUpon>202211211938460_Skuska.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsManagement\Configuration.cs" />
     <Compile Include="Migrations\202211122017177_InitialCreate.cs" />
     <Compile Include="Migrations\202211122017177_InitialCreate.Designer.cs">
       <DependentUpon>202211122017177_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211122049201_InitModel.cs" />
-    <Compile Include="Migrations\202211122049201_InitModel.Designer.cs">
-      <DependentUpon>202211122049201_InitModel.cs</DependentUpon>
+    <Compile Include="Migrations\202211211505492_SeedUser.cs" />
+    <Compile Include="Migrations\202211211505492_SeedUser.Designer.cs">
+      <DependentUpon>202211211505492_SeedUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211122126223_SeedUsers.cs" />
-    <Compile Include="Migrations\202211122126223_SeedUsers.Designer.cs">
-      <DependentUpon>202211122126223_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\202211211933555_InitModel.cs" />
+    <Compile Include="Migrations\202211211933555_InitModel.Designer.cs">
+      <DependentUpon>202211211933555_InitModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211131038583_DateTimeProps.cs" />
-    <Compile Include="Migrations\202211131038583_DateTimeProps.Designer.cs">
-      <DependentUpon>202211131038583_DateTimeProps.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211131228487_ModelValidations.cs" />
-    <Compile Include="Migrations\202211131228487_ModelValidations.Designer.cs">
-      <DependentUpon>202211131228487_ModelValidations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211191721167_Updated.cs" />
-    <Compile Include="Migrations\202211191721167_Updated.Designer.cs">
-      <DependentUpon>202211191721167_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211191733385_workoutTypeReqOff.cs" />
-    <Compile Include="Migrations\202211191733385_workoutTypeReqOff.Designer.cs">
-      <DependentUpon>202211191733385_workoutTypeReqOff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211201153399_WorkoutUpdated.cs" />
-    <Compile Include="Migrations\202211201153399_WorkoutUpdated.Designer.cs">
-      <DependentUpon>202211201153399_WorkoutUpdated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211201209463_WorkoutUpdated2.cs" />
-    <Compile Include="Migrations\202211201209463_WorkoutUpdated2.Designer.cs">
-      <DependentUpon>202211201209463_WorkoutUpdated2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211201323029_addedSignedCustomerToWorkout.cs" />
-    <Compile Include="Migrations\202211201323029_addedSignedCustomerToWorkout.Designer.cs">
-      <DependentUpon>202211201323029_addedSignedCustomerToWorkout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211201905243_workoutTypeReqNameOf.cs" />
-    <Compile Include="Migrations\202211201905243_workoutTypeReqNameOf.Designer.cs">
-      <DependentUpon>202211201905243_workoutTypeReqNameOf.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211201922264_workoutTypeId.cs" />
-    <Compile Include="Migrations\202211201922264_workoutTypeId.Designer.cs">
-      <DependentUpon>202211201922264_workoutTypeId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211201948267_addedWorkoutIncidentTables.cs" />
-    <Compile Include="Migrations\202211201948267_addedWorkoutIncidentTables.Designer.cs">
-      <DependentUpon>202211201948267_addedWorkoutIncidentTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211202059357_fixesWorkouts.cs" />
-    <Compile Include="Migrations\202211202059357_fixesWorkouts.Designer.cs">
-      <DependentUpon>202211202059357_fixesWorkouts.cs</DependentUpon>
+    <Compile Include="Migrations\202211211936085_MtoMUpdate.cs" />
+    <Compile Include="Migrations\202211211936085_MtoMUpdate.Designer.cs">
+      <DependentUpon>202211211936085_MtoMUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
@@ -258,13 +234,11 @@
     <Compile Include="Models\Identity\ManageViewModels.cs" />
     <Compile Include="Models\Management\Coach.cs" />
     <Compile Include="Models\Management\Customer.cs" />
+    <Compile Include="Models\Management\Customer_Workout.cs" />
     <Compile Include="Models\Management\Event.cs" />
     <Compile Include="Models\Management\Gear.cs" />
     <Compile Include="Models\Management\Message.cs" />
     <Compile Include="Models\Management\Product.cs" />
-    <Compile Include="Models\Management\SignedCoachToWorkout.cs" />
-    <Compile Include="Models\Management\SignedCustomerToWorkout.cs" />
-    <Compile Include="Models\Management\SignedWorkoutTypeToWorkout.cs" />
     <Compile Include="Models\Management\Workout.cs" />
     <Compile Include="Models\Management\WorkoutType.cs" />
     <Compile Include="Models\Management\WorkoutViewModel.cs" />
@@ -648,47 +622,23 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MigrationsManagement\202211211437222_Init.resx">
+      <DependentUpon>202211211437222_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsManagement\202211211938460_Skuska.resx">
+      <DependentUpon>202211211938460_Skuska.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211122017177_InitialCreate.resx">
       <DependentUpon>202211122017177_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211122049201_InitModel.resx">
-      <DependentUpon>202211122049201_InitModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211211505492_SeedUser.resx">
+      <DependentUpon>202211211505492_SeedUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211122126223_SeedUsers.resx">
-      <DependentUpon>202211122126223_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211211933555_InitModel.resx">
+      <DependentUpon>202211211933555_InitModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211131038583_DateTimeProps.resx">
-      <DependentUpon>202211131038583_DateTimeProps.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211131228487_ModelValidations.resx">
-      <DependentUpon>202211131228487_ModelValidations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211191721167_Updated.resx">
-      <DependentUpon>202211191721167_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211191733385_workoutTypeReqOff.resx">
-      <DependentUpon>202211191733385_workoutTypeReqOff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211201153399_WorkoutUpdated.resx">
-      <DependentUpon>202211201153399_WorkoutUpdated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211201209463_WorkoutUpdated2.resx">
-      <DependentUpon>202211201209463_WorkoutUpdated2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211201323029_addedSignedCustomerToWorkout.resx">
-      <DependentUpon>202211201323029_addedSignedCustomerToWorkout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211201905243_workoutTypeReqNameOf.resx">
-      <DependentUpon>202211201905243_workoutTypeReqNameOf.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211201922264_workoutTypeId.resx">
-      <DependentUpon>202211201922264_workoutTypeId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211201948267_addedWorkoutIncidentTables.resx">
-      <DependentUpon>202211201948267_addedWorkoutIncidentTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211202059357_fixesWorkouts.resx">
-      <DependentUpon>202211202059357_fixesWorkouts.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211211936085_MtoMUpdate.resx">
+      <DependentUpon>202211211936085_MtoMUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

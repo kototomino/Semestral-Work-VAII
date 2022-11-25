@@ -19,9 +19,9 @@ namespace Gym_Management.Controllers.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/WorkoutTypes
-        public IQueryable<WorkoutType> GetWorkoutTypes()
+        public IEnumerable<WorkoutType> GetWorkoutTypes()
         {
-            return db.WorkoutTypes;
+            return db.WorkoutTypes.ToList();
         }
 
         // GET: api/WorkoutTypes/5

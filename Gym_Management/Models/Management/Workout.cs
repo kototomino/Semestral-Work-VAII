@@ -10,6 +10,7 @@ namespace Gym_Management.Models.Management
     {
         [Key]
         public int Id { get; set; }
+        //public int WorkoutId { get; set; }
         [Required]
         [StringLength(70)]
         public string Name { get; set; }
@@ -25,8 +26,9 @@ namespace Gym_Management.Models.Management
         public DateTime EndDateTime { get; set; }
         public Coach Coach { get; set; }
         public int CoachId { get; set; }
-        public List<Customer> Customers { get; set; } = new List<Customer>();
+        //public ICollection<Customer> Customers { get; set; } = new HashSet<Customer>();
         [Required]
         public decimal? Capacity { get; set; }
+        public ICollection<Customer_Workout> Customer_Workouts { get; set; } = new HashSet<Customer_Workout>();
     }
 }
