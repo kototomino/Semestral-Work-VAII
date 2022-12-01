@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Gym_Management.Models.Management.Gear>
+
+@{
+    ViewBag.Title = "Gear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.AntiForgeryToken()
+ 
+</p>
+<table id="gear" class="styled-table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GearType)
+            </th>
+
+        </tr>
+    </thead>
+</table>
+
+<div class="modal" tabindex="-1" id="gear_modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+        var dataTable;
+        $(document).ready(function () {
+            dataTable = $("#gear").DataTable({
+                "ajax": {
+                    "url": "/Gear/GetAllGear",
+                    "type": "GET",
+                    "dataType": "json"
+
+                },
+                "columns": [
+                    { "data": "Name", "autowidth": true },
+                    { "data": "Quantity", "autowidth": true },
+                    { "data": "GearType", "autowidth": true },
+
+                ],
+
+
+            });
+
+        });
+
+        function getGear(id) {
+            $.get("/Gear/GetGearPartial", { id: id }, function (res) {
+                $("#gear_modal .modal-body").html(res);
+                $("#gear_modal").modal('show');
+            });
+        }
+        
+        
+    </script>
+}

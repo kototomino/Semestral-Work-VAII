@@ -29,6 +29,7 @@ namespace Gym_Management.Models.Management
         //public ICollection<Customer> Customers { get; set; } = new HashSet<Customer>();
         [Required]
         public decimal? Capacity { get; set; }
+        [Display(Name = "Customers")]
         public ICollection<Customer_Workout> Customer_Workouts { get; set; } = new HashSet<Customer_Workout>();
     }
 }

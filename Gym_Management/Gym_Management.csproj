@@ -228,6 +228,10 @@
     <Compile Include="Migrations\202211211936085_MtoMUpdate.Designer.cs">
       <DependentUpon>202211211936085_MtoMUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212010843086_addedEventDescription.cs" />
+    <Compile Include="Migrations\202212010843086_addedEventDescription.Designer.cs">
+      <DependentUpon>202212010843086_addedEventDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />
@@ -528,6 +532,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\myJavaScript.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -590,7 +595,7 @@
     <Content Include="Views\Gear\Create.cshtml" />
     <Content Include="Views\Gear\Delete.cshtml" />
     <Content Include="Views\Gear\Details.cshtml" />
-    <Content Include="Views\Gear\Edit.cshtml" />
+    <Content Include="Views\Gear\AddOrEdit.cshtml" />
     <Content Include="Views\Gear\Index.cshtml" />
     <Content Include="Views\Message\Create.cshtml" />
     <Content Include="Views\Message\Delete.cshtml" />
@@ -604,6 +609,8 @@
     <Content Include="Views\Coach\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Gear\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\Gear\IndexCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -639,6 +646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211211936085_MtoMUpdate.resx">
       <DependentUpon>202211211936085_MtoMUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212010843086_addedEventDescription.resx">
+      <DependentUpon>202212010843086_addedEventDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

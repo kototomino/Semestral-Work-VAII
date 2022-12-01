@@ -13,8 +13,9 @@ namespace Gym_Management
                         "~/Scripts/datatables/jquery.datatables.js",
                         "~/Scripts/datatables/datatables.bootstrap.js",
                         "~/Scripts/moment.js",
-                        "~/Scripts/bootstrap-datetimepicker.js"
-                        
+                        "~/Scripts/bootstrap-datetimepicker.js",
+                        "~/Scripts/myJavaScript.js"
+
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

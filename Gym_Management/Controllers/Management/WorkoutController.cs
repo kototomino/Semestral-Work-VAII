@@ -60,6 +60,7 @@ namespace Gym_Management.Controllers.Management
             //var customer = db.Customers.Where(x => x.Id == signed.CustomerId).FirstOrDefault();
             //db.Workouts.FirstOrDefault().Customers.Add(customer);
         }
+        
         private void PrepareWorkoutTypes()
         {
             var wtypes = db.WorkoutTypes.ToList();

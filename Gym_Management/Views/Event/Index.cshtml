@@ -16,7 +16,7 @@
     }
 
 </p>
-<table id="event" class="styled-table table-bordered table-hover">
+<table id="event" class="styled-table table-bordered table-hover table-responsive">
     <thead>
         <tr>
             <th>
@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.EndDateTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Coaches)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
             </th>
@@ -48,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.EndDateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Coaches)
+                Check Details
             </td>
             <td>
                 @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))

@@ -45,7 +45,12 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+<div class="action-link-button">
     @Html.ActionLink("Back to List", "Index")
-</p>
+    @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+
+    }
+
+</div>

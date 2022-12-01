@@ -20,10 +20,12 @@
         </div>
     </div>
 
+    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    
+
     <script>
         $(document).ready(function () {
             $(".body-content").show().animate({ opacity: '0.84' }, 1500);

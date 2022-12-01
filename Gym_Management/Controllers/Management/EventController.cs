@@ -49,7 +49,7 @@ namespace Gym_Management.Controllers.Management
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult Create([Bind(Include = "Id,Name,StartDateTime,EndDateTime")] Event @event)
+        public ActionResult Create([Bind(Include = "Id,Name,StartDateTime,EndDateTime,Description")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace Gym_Management.Controllers.Management
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult Edit([Bind(Include = "Id,Name,StartDateTime,EndDateTime")] Event @event)
+        public ActionResult Edit([Bind(Include = "Id,Name,StartDateTime,EndDateTime,Description")] Event @event)
         {
             if (ModelState.IsValid)
             {

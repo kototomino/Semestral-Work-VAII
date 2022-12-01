@@ -45,31 +45,11 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+        <div class="action-link-button">
+
             @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" />
         </div>
     }
 </div>
-@*@section scripts {
-    <script>
-        $(document).ready(function () {
 
-            $(".delete").click(function () {
-                var id = @Model.Id;
-                $.ajax({
-                    url: '@Url.Action("Delete","Product")',
-                    type: "POST",
-                    data: {
-                        id: id
-
-                    },
-
-
-                });
-            });
-        });
-
-    </script>
-
-    }*@

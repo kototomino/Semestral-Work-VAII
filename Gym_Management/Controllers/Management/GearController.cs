@@ -18,114 +18,83 @@ namespace Gym_Management.Controllers.Management
         // GET: Gear
         public ActionResult Index()
         {
-            return View(db.Gear.ToList());
+            if (User.IsInRole(Constants.Roles.Admin))
+            {
+                return View();
+            } else
+            {
+                return View("IndexCustomer");
+            }
+            
         }
 
-        // GET: Gear/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult GetGearPartial(int? id)
         {
-            if (id == null)
+            var gear = db.Gear.Find(id) ?? new Gear();
+            return PartialView("_CreateOrUpdate", gear);
+        }
+
+        [Authorize(Roles = Constants.Roles.Admin)]
+        public ActionResult DeleteGear(int id)
+        {
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var gear = db.Gear.Find(id);
+                db.Gear.Remove(gear);
+                db.SaveChanges();
+                return Json(true, JsonRequestBehavior.AllowGet);
             }
-            Gear gear = db.Gear.Find(id);
-            if (gear == null)
+            catch (Exception)
             {
-                return HttpNotFound();
+
+                return Json(false, JsonRequestBehavior.AllowGet);
             }
-            return View(gear);
+            
+        }
+        [Authorize(Roles = Constants.Roles.Admin)]
+        public ActionResult CreateOrUpdate(Gear gear)
+        {
+            if (ModelState.IsValid)
+            {
+                if (gear.Id > 0)
+                {
+                    db.Entry(gear).State = EntityState.Modified;
+                }
+                else
+                {
+                    db.Gear.Add(gear);
+                }
+
+                db.SaveChanges();
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetAllGear()
+        {
+            var gear = db.Gear.ToList();
+            return Json(new { data = gear }, JsonRequestBehavior.AllowGet);
         }
         // GET: Gear/AddOrEdit/5
+        [Authorize(Roles = Constants.Roles.Admin)]
         public ActionResult AddOrEdit(int id = 0)
         {
-            return View();
-        }
-        // GET: Gear/Create
-        [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Gear/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult Create([Bind(Include = "Id,Name,Quantity,GearType")] Gear gear)
-        {
-            if (ModelState.IsValid)
+            if (id == 0)
             {
-                db.Gear.Add(gear);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View();
+            }
+            else
+            {
+                Gear gear = db.Gear.Find(id);
+                if (gear == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(gear);
             }
 
-            return View(gear);
         }
-
-        // GET: Gear/Edit/5
-        [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gear gear = db.Gear.Find(id);
-            if (gear == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gear);
-        }
-
-        // POST: Gear/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult Edit([Bind(Include = "Id,Name,Quantity,GearType")] Gear gear)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(gear).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(gear);
-        }
-
-        // GET: Gear/Delete/5
-        [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gear gear = db.Gear.Find(id);
-            if (gear == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gear);
-        }
-
-        // POST: Gear/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = Constants.Roles.Admin)]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Gear gear = db.Gear.Find(id);
-            db.Gear.Remove(gear);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

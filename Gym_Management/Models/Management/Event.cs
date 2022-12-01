@@ -19,6 +19,8 @@ namespace Gym_Management.Models.Management
         [Required]
         [Display(Name = "To")]
         public DateTime EndDateTime { get; set; }
-        public List<Coach> Coaches { get; set; }
+        [StringLength(200)]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
     }
 }

@@ -8,14 +8,14 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-
+    @Html.AntiForgeryToken()
     @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
     {
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        @Html.ActionLink("Create New", "Create", "Gear", new { @class = "styled-action-link-button" })
+
+        <button type="button" id="addbtn" onclick="getGear()" class="btn btn-sm btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
     }
 </p>
-<table id="gear" class="styled-table table-bordered table-hover">
+<table id="gear" class="styled-table table-bordered table-hover table-responsive">
     <thead>
         <tr>
             <th>
@@ -27,47 +27,97 @@
             <th>
                 @Html.DisplayNameFor(model => model.GearType)
             </th>
-            <th></th>
+            <th>
+                Edit
+            </th>
+            <th>
+                Delete
+            </th>
         </tr>
     </thead>
-    @foreach (var item in Model)
-    {
-        <tr class="active-row">
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GearType)
-            </td>
-            <td>
-                @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
-                {
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    @Html.ActionLink("Details", "Details", new { id = item.Id })
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                }
-                else
-                {
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    @Html.ActionLink("Details", "Details", new { id = item.Id })
-                }
-
-            </td>
-        </tr>
-    }
-
 </table>
+
+<div class="modal" tabindex="-1" id="gear_modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section scripts {
     <script>
+        var dataTable;
         $(document).ready(function () {
-            $("#gear").DataTable();
+            dataTable = $("#gear").DataTable({
+                "ajax": {
+                    "url": "/Gear/GetAllGear",
+                    "type": "GET",
+                    "dataType": "json"
+
+                },
+                "columns": [
+                    { "data": "Name", "autowidth": true },
+                    { "data": "Quantity", "autowidth": true },
+                    { "data": "GearType", "autowidth": true },
+
+                    {
+                        "data": "Id", "width": "50px", "render": function (data) {
+                            return '<button class="btn btn-primary" onclick="getGear(' + data + ')">Edit</button>'
+
+                        }
+                    },
+                    {
+                        "data": "Id", "width": "50px", "render": function (data) {
+
+                            return '<button class="btn btn-danger" onclick="Delete(' + data + ')">Delete</button>'
+                        }
+
+                    },
+                ],
+
+
+            });
 
         });
+
+        function getGear(id) {
+            $.get("/Gear/GetGearPartial", { id: id }, function (res) {
+                $("#gear_modal .modal-body").html(res);
+                $("#gear_modal").modal('show');
+            });
+        }
+        function createOrUpdate() {
+            var modal = $("#gear_modal");
+            var form = $('form[name="gearForm"]');
+
+            var data = form.serialize();
+            $.post("/Gear/CreateOrUpdate", data, function (res) {
+                if (res) {
+                    modal.modal('hide');
+                    dataTable.ajax.reload();
+
+                } else {
+                    $("#gear_modal .modal-body").html(res.html);
+                    alert("modal was not submitted wrong data");
+                }
+
+            });
+
+        }
+        function Delete(id) {
+            if (confirm("Are you sure ?") == true) {
+                $.get("/Gear/DeleteGear", { id: id }, function (res) {
+                    if (res) {
+                        dataTable.ajax.reload();
+                    }
+
+                })
+
+            }
+        }
     </script>
 }

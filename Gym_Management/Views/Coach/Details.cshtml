@@ -53,9 +53,12 @@
 
     </dl>
 </div>
-<p>
-    <i class="fa fa-pencil" aria-hidden="true"></i>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+<div class="action-link-button">
     @Html.ActionLink("Back to List", "Index")
-</p>
+    @if (User.IsInRole(Gym_Management.Constants.Roles.Admin))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+
+    }
+
+</div>
