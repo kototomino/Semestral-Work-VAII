@@ -12,6 +12,7 @@
     {
         <i class="fa fa-plus" aria-hidden="true"></i>
         @Html.ActionLink("Create New", "Create", "Product", new { @class = "styled-action-link-button" })
+        @Html.ActionLink("Export", "ExportProductsToExcel", "Product", new { @class = "btn btn-success export-btn" })
     }
 </p>
 <table id="product" class="styled-table table-bordered table-hover table-responsive">

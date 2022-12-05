@@ -13,6 +13,7 @@
     {
 
         <button type="button" id="addbtn" onclick="getGear()" class="btn btn-sm btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+        @Html.ActionLink("Export", "ExportGearToExcel", "Gear", new { @class = "btn btn-success export-btn" })
     }
 </p>
 <table id="gear" class="styled-table table-bordered table-hover table-responsive">

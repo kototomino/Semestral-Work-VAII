@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Gym_Management.Models;
 using Gym_Management.Models.Management;
+using OfficeOpenXml;
 
 namespace Gym_Management.Controllers.Management
 {
@@ -94,7 +96,22 @@ namespace Gym_Management.Controllers.Management
             }
 
         }
-       
+        [Authorize(Roles = Constants.Roles.Admin)]
+        public ActionResult ExportGearToExcel()
+        {
+            var list = db.Gear.ToList();
+            var stream = new MemoryStream();
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            using (ExcelPackage pck = new ExcelPackage(stream))
+            {
+                var worksheet = pck.Workbook.Worksheets.Add("Gear");
+                worksheet.Cells[1, 1].LoadFromCollection(list, true);
+                pck.Save();
+            }
+            stream.Position = 0;
+            string excelName = $"GearList-{DateTime.Now.ToString("G")}.xlsx";
+            return File(stream, "application/vmd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
