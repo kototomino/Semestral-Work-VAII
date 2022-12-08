@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gym_Management.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,9 +21,11 @@ namespace Gym_Management.Models.Management
         public int WorkoutTypeId { get; set; }
         [Required]
         [Display(Name = "From")]
+        [WorkoutDateTimeValidationToFuture]
         public DateTime StartDateTime { get; set; }
         [Required]
         [Display(Name = "To")]
+        [WorkoutDateTimeValidationToFuture]
         public DateTime EndDateTime { get; set; }
         public Coach Coach { get; set; }
         public int CoachId { get; set; }

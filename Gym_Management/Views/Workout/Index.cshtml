@@ -68,7 +68,7 @@
                 {
                     foreach (var customer in item.Customer_Workouts)
                     {
-                        @Html.DisplayFor(modelItem => customer.Customer.Name)
+                        @Html.FormatValue(Html.DisplayFor(modelItem => customer.Customer.Name), "{0} ")
                     }
                 }
             </td>
@@ -101,7 +101,6 @@
     <script>
         $(document).ready(function () {
             $("#workout").DataTable({
-                responsive = true
             });
 
         });

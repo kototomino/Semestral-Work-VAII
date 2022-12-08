@@ -174,8 +174,8 @@ namespace Gym_Management.Controllers.Management
                 }
             }
 
-            //workout.Customers.Add(customer);
-
+            
+            
             return RedirectToAction("Index", db.Workouts.ToList());
         }
         // GET: Workout/Create

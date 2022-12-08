@@ -8537,6 +8537,12 @@ button.close {
         left: 40px;
     }
 }
+@media screen and (max-width: 400px) {
+    .footer-clock {
+        bottom: 115px;
+        left: 40px;
+    }
+}
 .styled-action-link-button {
     border: 2px solid black;
     border-radius: 10px;
@@ -8596,7 +8602,7 @@ button.close {
     opacity:1;
     position: absolute;
     top: 100px;
-    right: 170px;
+    right: 180px;
     font-size: 50px;
     font-weight: bold;
     z-index:1;
@@ -8747,5 +8753,8 @@ img.hover-shadow {
     float:right;
     margin-bottom: 5px;
 
+}
+.gallery-max-img {
+    width:100%;
 }
 /*# sourceMappingURL=bootstrap.css.map */

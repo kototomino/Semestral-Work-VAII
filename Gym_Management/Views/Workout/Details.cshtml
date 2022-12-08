@@ -56,7 +56,7 @@
         <dd>
             @foreach (var item in Model.Customer_Workouts)
             {
-                @Html.DisplayFor(model => item.Customer.Name)
+                @Html.FormatValue(Html.DisplayFor(model => item.Customer.Name), "{0} ")
             }
 
         </dd>

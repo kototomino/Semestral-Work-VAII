@@ -200,10 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\Constants.cs" />
-    <Compile Include="Context\ManagementDbContext.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
-    <Compile Include="Controllers\Api\CustomersController.cs" />
-    <Compile Include="Controllers\Api\WorkoutTypesController.cs" />
     <Compile Include="Controllers\Management\CoachController.cs" />
     <Compile Include="Controllers\Management\CustomerController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
@@ -218,15 +215,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\CoachManager.cs" />
-    <Compile Include="MigrationsManagement\202211211437222_Init.cs" />
-    <Compile Include="MigrationsManagement\202211211437222_Init.Designer.cs">
-      <DependentUpon>202211211437222_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MigrationsManagement\202211211938460_Skuska.cs" />
-    <Compile Include="MigrationsManagement\202211211938460_Skuska.Designer.cs">
-      <DependentUpon>202211211938460_Skuska.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MigrationsManagement\Configuration.cs" />
     <Compile Include="Migrations\202211122017177_InitialCreate.cs" />
     <Compile Include="Migrations\202211122017177_InitialCreate.Designer.cs">
       <DependentUpon>202211122017177_InitialCreate.cs</DependentUpon>
@@ -263,6 +251,7 @@
     <Compile Include="Models\Management\WorkoutViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validators\WorkoutDateTimeValidationToFuture.cs" />
     <Compile Include="Validators\MinimalAge15Customer.cs" />
     <Compile Include="Validators\MinimalAge18Coach.cs" />
   </ItemGroup>
@@ -559,8 +548,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -607,9 +594,6 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Gear\Create.cshtml" />
-    <Content Include="Views\Gear\Delete.cshtml" />
-    <Content Include="Views\Gear\Details.cshtml" />
     <Content Include="Views\Gear\AddOrEdit.cshtml" />
     <Content Include="Views\Gear\Index.cshtml" />
     <Content Include="Views\Message\Create.cshtml" />
@@ -644,12 +628,6 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MigrationsManagement\202211211437222_Init.resx">
-      <DependentUpon>202211211437222_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MigrationsManagement\202211211938460_Skuska.resx">
-      <DependentUpon>202211211938460_Skuska.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211122017177_InitialCreate.resx">
       <DependentUpon>202211122017177_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
